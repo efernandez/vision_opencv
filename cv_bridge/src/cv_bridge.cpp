@@ -265,6 +265,7 @@ cv::Mat matFromImage(const sensor_msgs::Image& source)
     throw Exception(ss.str());
   }
 
+#if 0
   if (source.height * source.step != source.data.size())
   {
     std::stringstream ss;
@@ -272,6 +273,7 @@ cv::Mat matFromImage(const sensor_msgs::Image& source)
               source.step << " != " << source.data.size();
     throw Exception(ss.str());
   }
+#endif
 
   // If the endianness is the same as locally, share the data
   cv::Mat mat(source.height, source.width, source_type, const_cast<uchar*>(&source.data[0]), source.step);
