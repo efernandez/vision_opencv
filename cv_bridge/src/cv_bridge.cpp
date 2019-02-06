@@ -199,6 +199,10 @@ std::map<std::pair<Encoding, Encoding>, std::vector<int> > getConversionCodes() 
 
 const std::vector<int> getConversionCode(std::string src_encoding, std::string dst_encoding)
 {
+  if (src_encoding == enc::TYPE_16UC1)
+  {
+    src_encoding = enc::MONO16;
+  }
   Encoding src_encod = getEncoding(src_encoding);
   Encoding dst_encod = getEncoding(dst_encoding);
   bool is_src_color_format = enc::isColor(src_encoding) || enc::isMono(src_encoding) ||
